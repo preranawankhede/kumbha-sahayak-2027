@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f97316">
+<title>Kumbha Sahayak 2027</title>
+
+<style>
+:root {
+  --bg: #fff4df;
+  --card: rgba(255, 251, 243, 0.96);
+  --ink: #57230c;
+  --accent: #f97316;
+  --muted: #916348;
+  --line: #ffd0a1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top, #fff7ce 0%, transparent 40%),
+    linear-gradient(180deg, #f8c68d 0%, #ffe6c2 35%,
+    #f5a45d 70%, #9b451e 100%);
+  overflow-x: hidden;
+}
+
+/* Decorative background made entirely with CSS */
+.background-decoration {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.sun {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff6c7, #ffca72 65%, transparent 72%);
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+}
+
+.river {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 24%;
+  background:
+    repeating-linear-gradient(
+      176deg,
+      rgba(255, 225, 164, 0.7) 0 2px,
+      transparent 2px 18px
+    ),
+    linear-gradient(#c8753c, #54230f);
+}
+
+/* Temple silhouette */
+.temple {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  background: #54210e;
+  opacity: 0.88;
+  clip-path: polygon(
+    0 100%, 0 65%, 5% 65%, 5% 48%, 8% 35%,
+    11% 48%, 11% 70%, 17% 70%, 17% 53%,
+    22% 53%, 22% 34%, 25% 53%, 25% 76%,
+    75% 76%, 75% 53%, 79% 53%, 79% 36%,
+    82% 53%, 82% 70%, 89% 70%, 89% 45%,
+    93% 30%, 97% 45%, 97% 68%, 100% 68%, 100% 100%
+  );
+}
+
+main {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  padding: 24px 18px 35px;
+}
+
+.hero {
+  text-align: center;
+  padding: 12px 5px 22px;
+}
+
+.trident {
+  font-size: 48px;
+  margin-bottom: 8px;
+  text-shadow: 0 3px 0 #fff0c8;
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 7vw, 49px);
+  color: #7d2b0b;
+  line-height: 1.1;
+}
+
+.year {
+  font-family: Georgia, serif;
+  font-size: 38px;
+  font-weight: bold;
+  color: #e9570b;
+  margin: 3px 0 8px;
+}
+
+.subtitle {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: 12px;
+  color: #79401f;
+}
+
+.ornament {
+  color: #c94d0b;
+  margin-top: 10px;
+  letter-spacing: 5px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 15px;
+  box-shadow: 0 9px 25px rgba(94, 39, 9, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.language-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 45px minmax(0, 1fr);
+  gap: 10px;
+  align-items: end;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 750;
+  margin: 0 0 8px 4px;
+}
+
+select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 9px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffaf2;
+  color: var(--ink);
+  font: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s;
+}
+
+button:hover {
+  filter: brightness(1.04);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.swap {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff3e1;
+  color: #bd430b;
+  font-size: 25px;
+}
+
+.voice-card {
+  text-align: center;
+  padding: 25px 15px;
+}
+
+.mic-ring {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #ffdab3;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  box-shadow: 0 0 0 9px rgba(255, 239, 211, 0.7);
+}
+
+#mic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ffd9a8;
+  background: radial-gradient(
+    circle at 30% 25%, #ffb52f, #ff680b 60%, #df3609
+  );
+  color: white;
+  font-size: 42px;
+  box-shadow: 0 7px 20px rgba(208, 63, 5, 0.25);
+}
+
+#mic.rec {
+  background: radial-gradient(circle at 30% 25%, #ff7373, #c91c15);
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 12px rgba(255, 105, 75, 0.25);
+  }
+}
+
+.mic-caption {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 7px 0 14px;
+}
+
+#status {
+  display: inline-block;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff5e7;
+  color: #754329;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.section-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #ffedda;
+  color: #e9570b;
+}
+
+.txt {
+  min-height: 52px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #efddce;
+  background: #f9f0e5;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.quick button {
+  padding: 12px 9px;
+  border-radius: 999px;
+  border: 1px solid #ffbc80;
+  background: #fff6e9;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.quick button span {
+  margin-right: 5px;
+}
+
+#stopVoice {
+  display: block;
+  margin: 8px auto 18px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 2px solid #e9570b;
+  background: #fff9ef;
+  color: #ad3309;
+  font-weight: 750;
+}
+
+footer {
+  text-align: center;
+  color: #fff0c9;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 5px #51200d;
+}
+
+footer .om {
+  font-size: 27px;
+  color: #ffb13b;
+}
+
+@media (max-width: 420px) {
+  main {
+    padding: 15px 12px 25px;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 17px;
+  }
+
+  .language-row {
+    gap: 6px;
+    grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr);
+  }
+
+  select {
+    font-size: 13px;
+    padding: 11px 5px;
+  }
+
+  .swap {
+    width: 36px;
+    height: 40px;
+  }
+
+  .mic-ring {
+    width: 140px;
+    height: 140px;
+  }
+
+  #mic {
+    width: 112px;
+    height: 112px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="background-decoration" aria-hidden="true">
+  <div class="sun"></div>
+  <div class="river"></div>
+  <div class="temple"></div>
+</div>
+
+<main>
+  <header class="hero">
+    <div class="trident">🔱</div>
+    <h1>Kumbha Sahayak</h1>
+    <div class="year">2027</div>
+    <p class="subtitle">Nashik Kumbh Mela Voice Translator</p>
+    <div class="ornament">──── ❀ ────</div>
+    <p class="tagline">BRIDGING LANGUAGES • CONNECTING PEOPLE</p>
+  </header>
+
+  <section class="card language-row" aria-label="Choose languages">
+    <div class="field">
+      <label for="src">From</label>
+      <select id="src" aria-label="Source language"></select>
+    </div>
+    <button class="swap" id="swap" type="button"
+      aria-label="Swap languages">⇄</button>
+    <div class="field">
+      <label for="tgt">To</label>
+      <select id="tgt" aria-label="Target language"></select>
+    </div>
+  </section>
+
+  <section class="card voice-card">
+    <div class="mic-ring">
+      <button id="mic" type="button" aria-label="Tap to speak">🎙</button>
+    </div>
+    <div class="mic-caption" id="micCaption">Tap to speak</div>
+    <div id="status" role="status" aria-live="polite">
+      Select languages and tap the microphone.
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">
+      <span class="section-icon">👤</span>
+      <span>You said</span>
+    </div>
+    <div class="txt" id="said" aria-live="polite">—</div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">
+      <span class="section-icon">文A</span>
+      <span>Translation</span>
+    </div>
+    <div class="txt" id="out" aria-live="polite">—</div>
+  </section>
+
+  <section class="card quick">
+    <div class="section-title">
+      <span class="section-icon">⚡</span>
+      <span>Quick phrases</span>
+    </div>
+    <div class="quick-grid">
+      <button type="button" data-t="Where is Ramkund?">
+        <span>📍</span>Ramkund?
+      </button>
+      <button type="button" data-t="Where is the toilet?">
+        <span>🚻</span>Toilet?
+      </button>
+      <button type="button" data-t="I need help">
+        <span>🆘</span>Help
+      </button>
+      <button type="button" data-t="I am lost">
+        <span>🧭</span>I am lost
+      </button>
+      <button type="button" data-t="Where is the medical camp?">
+        <span>✚</span>Medical camp
+      </button>
+    </div>
+  </section>
+
+  <button id="stopVoice" type="button">■ &nbsp; Stop speaking</button>
+
+  <footer>
+    <span class="om">ॐ</span>
+    <div>✦ &nbsp; || हर हर महादेव || &nbsp; ✦</div>
+  </footer>
+</main>
+
+<script>
+"use strict";
+
+// Keep this URL the same as your running backend.
+const API = "http://127.0.0.1:8000/api";
+
+const NAMES = {
+  mr: "मराठी",
+  hi: "हिन्दी",
+  en: "English",
+  gu: "ગુજરાતી",
+  ta: "தமிழ்",
+  te: "తెలుగు",
+  kn: "ಕನ್ನಡ",
+  bn: "বাংলা",
+  pa: "ਪੰਜਾਬੀ"
+};
+
+const VOICE_LANG = {
+  mr: "mr-IN",
+  hi: "hi-IN",
+  en: "en-US",
+  gu: "gu-IN",
+  ta: "ta-IN",
+  te: "te-IN",
+  kn: "kn-IN",
+  bn: "bn-IN",
+  pa: "pa-IN"
+};
+
+const src = document.getElementById("src");
+const tgt = document.getElementById("tgt");
+const mic = document.getElementById("mic");
+const micCaption = document.getElementById("micCaption");
+const status = document.getElementById("status");
+const said = document.getElementById("said");
+const out = document.getElementById("out");
+const stopVoice = document.getElementById("stopVoice");
+const speech = window.speechSynthesis;
+
+let recorder = null;
+let stream = null;
+let chunks = [];
+let isBusy = false;
+let requestNumber = 0;
+
+// Fill the language selectors.
+for (const [code, name] of Object.entries(NAMES)) {
+  src.add(new Option(name, code));
+  tgt.add(new Option(name, code));
+}
+
+src.value = "hi";
+tgt.value = "mr";
+
+// Update status text safely.
+function setStatus(message) {
+  status.textContent = message;
+}
+
+// Swap the selected languages.
+document.getElementById("swap").addEventListener("click", () => {
+  const oldSource = src.value;
+  src.value = tgt.value;
+  tgt.value = oldSource;
+});
+
+// Wait for available browser voices.
+function getVoices() {
+  return new Promise(resolve => {
+    const available = speech.getVoices();
+
+    if (available.length) {
+      resolve(available);
+      return;
+    }
+
+    let finished = false;
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      speech.removeEventListener("voiceschanged", finish);
+      resolve(speech.getVoices());
+    };
+
+    speech.addEventListener("voiceschanged", finish);
+    setTimeout(finish, 1500);
+  });
+}
+
+// Speak the translated text using a voice available in the browser.
+async function speakLikeSiri(text, languageCode) {
+  if (!text || !text.trim()) return;
+
+  speech.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  const wantedLanguage = VOICE_LANG[languageCode] || "en-US";
+  const prefix = wantedLanguage.split("-")[0].toLowerCase();
+  const voices = await getVoices();
+
+  const matching = voices.filter(voice =>
+    voice.lang.toLowerCase().startsWith(prefix)
+  );
+
+  const preferred =
+    matching.find(voice =>
+      /female|zira|samantha|aria|jenny|heera/i.test(voice.name)
+    ) ||
+    matching.find(voice =>
+      !/male|david|mark/i.test(voice.name)
+    ) ||
+    matching[0];
+
+  if (preferred) {
+    utterance.voice = preferred;
+    utterance.lang = preferred.lang;
+  } else {
+    utterance.lang = wantedLanguage;
+  }
+
+  utterance.rate = 0.92;
+  utterance.pitch = 1.08;
+  utterance.volume = 1;
+
+  utterance.onstart = () => setStatus("Speaking translation…");
+
+  utterance.onend = () => {
+    if (!isBusy) setStatus("Translation complete.");
+  };
+
+  utterance.onerror = event => {
+    if (event.error !== "canceled" &&
+        event.error !== "interrupted") {
+      setStatus(
+        "Translation is ready, but this browser voice could not speak it."
+      );
+    }
+  };
+
+  speech.speak(utterance);
+}
+
+// Stop spoken output.
+stopVoice.addEventListener("click", () => {
+  speech.cancel();
+  setStatus(isBusy ? "Processing…" : "Speech stopped.");
+});
+
+// Release microphone resources.
+function releaseMicrophone() {
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+    stream = null;
+  }
+}
+
+function resetMic() {
+  mic.classList.remove("rec");
+  mic.textContent = "🎙";
+  micCaption.textContent = "Tap to speak";
+  mic.setAttribute("aria-label", "Tap to speak");
+  mic.disabled = false;
+}
+
+// Start or stop audio recording.
+mic.addEventListener("click", async () => {
+  if (recorder && recorder.state === "recording") {
+    mic.disabled = true;
+    setStatus("Finishing recording…");
+    recorder.stop();
+    return;
+  }
+
+  if (isBusy) return;
+
+  if (!navigator.mediaDevices?.getUserMedia ||
+      !window.MediaRecorder) {
+    setStatus(
+      "Recording is not supported here. Open the page on localhost in a supported browser."
+    );
+    return;
+  }
+
+  try {
+    speech.cancel();
+
+    stream = await navigator.mediaDevices.getUserMedia({
+      audio: true
+    });
+
+    const options = {};
+
+    if (MediaRecorder.isTypeSupported("audio/webm;codecs=opus")) {
+      options.mimeType = "audio/webm;codecs=opus";
+    } else if (MediaRecorder.isTypeSupported("audio/webm")) {
+      options.mimeType = "audio/webm";
+    }
+
+    recorder = new MediaRecorder(stream, options);
+    chunks = [];
+
+    recorder.ondataavailable = event => {
+      if (event.data && event.data.size > 0) {
+        chunks.push(event.data);
+      }
+    };
+
+    recorder.onerror = () => {
+      releaseMicrophone();
+      resetMic();
+      setStatus("Recording failed. Please try again.");
+    };
+
+    recorder.onstop = async () => {
+      const blob = new Blob(chunks, {
+        type: recorder.mimeType || "audio/webm"
+      });
+
+      releaseMicrophone();
+      resetMic();
+
+      if (!blob.size) {
+        setStatus("No audio recorded. Please try again.");
+        return;
+      }
+
+      await sendAudio(blob);
+    };
+
+    recorder.start();
+
+    mic.classList.add("rec");
+    mic.textContent = "■";
+    micCaption.textContent = "Listening… tap to stop";
+    mic.setAttribute("aria-label", "Stop recording");
+
+    setStatus("Listening. Speak clearly, then tap to stop.");
+  } catch (error) {
+    releaseMicrophone();
+    resetMic();
+
+    setStatus(
+      "Microphone unavailable. Allow microphone permission and try again."
+    );
+
+    console.error("Microphone error:", error);
+  }
+});
+
+// Send recorded audio to the speech translation backend.
+async function sendAudio(blob) {
+  isBusy = true;
+  mic.disabled = true;
+
+  const currentRequest = ++requestNumber;
+  setStatus("Recognizing speech and translating…");
+
+  const form = new FormData();
+  form.append("audio", blob, "speech.webm");
+  form.append("src", src.value);
+  form.append("tgt", tgt.value);
+
+  try {
+    const response = await fetch(API + "/speech-translate", {
+      method: "POST",
+      body: form
+    });
+
+    if (!response.ok) {
+      let message = "Server error " + response.status;
+
+      try {
+        const errorData = await response.json();
+        if (errorData.detail) message = errorData.detail;
+      } catch (_) {}
+
+      throw new Error(message);
+    }
+
+    const result = await response.json();
+
+    if (currentRequest !== requestNumber) return;
+
+    const sourceText = result.source_text;
+    const translatedText = result.translated;
+
+    if (!sourceText || !translatedText) {
+      throw new Error("The server returned empty text.");
+    }
+
+    said.textContent = sourceText;
+    out.textContent = translatedText;
+
+    await speakLikeSiri(translatedText, tgt.value);
+  } catch (error) {
+    console.error("Speech translation error:", error);
+    setStatus("Error: " + error.message);
+  } finally {
+    isBusy = false;
+    mic.disabled = false;
+  }
+}
+
+// Translate the quick-help phrases.
+document.querySelectorAll(".quick button").forEach(button => {
+  button.addEventListener("click", async () => {
+    if (isBusy) return;
+
+    isBusy = true;
+    mic.disabled = true;
+
+    const currentRequest = ++requestNumber;
+    const phrase = button.dataset.t;
+
+    speech.cancel();
+    setStatus("Translating phrase…");
+
+    const form = new FormData();
+    form.append("text", phrase);
+    form.append("src", "en");
+    form.append("tgt", tgt.value);
+
+    try {
+      const response = await fetch(API + "/text-translate", {
+        method: "POST",
+        body: form
+      });
+
+      if (!response.ok) {
+        let message = "Server error " + response.status;
+
+        try {
+          const errorData = await response.json();
+          if (errorData.detail) message = errorData.detail;
+        } catch (_) {}
+
+        throw new Error(message);
+      }
+
+      const result = await response.json();
+
+      if (currentRequest !== requestNumber) return;
+
+      if (!result.translated) {
+        throw new Error("The server returned empty translation.");
+      }
+
+      said.textContent = phrase;
+      out.textContent = result.translated;
+
+      await speakLikeSiri(result.translated, tgt.value);
+    } catch (error) {
+      console.error("Quick phrase error:", error);
+      setStatus("Error: " + error.message);
+    } finally {
+      isBusy = false;
+      mic.disabled = false;
+    }
+  });
+});
+</script>
+</body>
+</html>
