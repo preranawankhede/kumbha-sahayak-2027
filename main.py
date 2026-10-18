@@ -21,14 +21,14 @@ from faster_whisper import WhisperModel
 
 app = FastAPI(title="Kumbha Sahayak 2027 API")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-    ],
-    allow_methods=["*"],
-    allow_headers=["*"],
+allow_origins=[
+    "https://preranawankhede.github.io",
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+],
+allow_credentials=False,
+allow_methods=["*"],
+allow_headers=["*"],
 )
 
 # Whisper language codes -> NLLB language codes
